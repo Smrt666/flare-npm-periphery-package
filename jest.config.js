@@ -2,10 +2,12 @@ module.exports = {
     "preset": "rollup-jest",
     "moduleFileExtensions": [
         "js",
-        "json",
-        "ts"
+        "ts",
     ],
     "transform": {
-        ".(ts|tsx|json)": "ts-jest"
+        ".(ts|tsx)": "ts-jest"
     },
+    "transformIgnorePatterns": [
+        ".json"
+    ]
 };

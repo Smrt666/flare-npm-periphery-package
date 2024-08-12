@@ -16,7 +16,7 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "rollup -c",
-    "test": "jest"
+    "test": "jest -c jest.config.js --no-cache"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^26.0.1",
