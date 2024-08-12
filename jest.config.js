@@ -6,6 +6,6 @@ module.exports = {
         "ts"
     ],
     "transform": {
-        ".(ts|tsx)": "ts-jest"
+        ".(ts|tsx|json)": "ts-jest"
     },
 };
