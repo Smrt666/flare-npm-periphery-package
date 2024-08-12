@@ -10,7 +10,8 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "preserveWatchOutput": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowJs": true
   },
   "include": [
     "index.ts",
