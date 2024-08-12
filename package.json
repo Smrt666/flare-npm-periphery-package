@@ -15,11 +15,17 @@
   ],
   "scripts": {
     "prebuild": "rm -rf dist",
-    "build": "tsc"
+    "build": "rollup -c"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.6.0",
-    "typescript": "^5.2.2",
-    "ethers": "^6.7.1"
+    "ethers": "^6.7.1",
+    "rollup": "^4.20.0",
+    "typescript": "^5.2.2"
   }
 }

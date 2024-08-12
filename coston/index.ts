@@ -1,5 +1,5 @@
-export * from "./deploys/addresses";
+import { abis } from "./abis";
+
 export * from "./deploys/mapper";
-
-
-export * as stateConnector from "./StateConnector/libs/ts/utils";
+export * from "./deploys/addresses";
+export * from "./abis";

@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "ESNext", // Rollup requires ES modules
     "target": "es2017",
     "declaration": true,
     "declarationMap": true,
@@ -19,5 +19,9 @@
     "coston2/",
     "songbird/",
     "flare/"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
   ]
 }
