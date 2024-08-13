@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { coston, coston2, flare, songbird } from "../index";
+import { coston, coston2, flare, songbird } from "../dist/index";
 
 
 [

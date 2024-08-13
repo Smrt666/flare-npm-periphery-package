@@ -1,4 +1,4 @@
-import * as index from "../index";
+import * as index from "../dist/index";
 
 
 describe('testing index file imports', () => {
