@@ -10,6 +10,7 @@
     "sourceMap": true,
     "experimentalDecorators": true,
     "preserveWatchOutput": true,
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "allowJs": true
   },
