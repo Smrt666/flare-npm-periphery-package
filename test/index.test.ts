@@ -1,48 +1,47 @@
-import * as dist from "../dist/index"
+import * as index from "../index";
 
 
 describe('testing index file imports', () => {
-
     test('Index gets imported', async () => {
-        expect(dist).toBeDefined();
+        expect(index).toBeDefined();
     });
 
     test('Index imports chains, getters', async () => {
-        expect(dist.coston).toBeDefined();
-        expect(dist.coston2).toBeDefined();
-        expect(dist.flare).toBeDefined();
-        expect(dist.songbird).toBeDefined();
+        expect(index.coston).toBeDefined();
+        expect(index.coston2).toBeDefined();
+        expect(index.flare).toBeDefined();
+        expect(index.songbird).toBeDefined();
 
-        expect(dist.nameToAbi).toBeDefined();
-        expect(dist.nameToAddress).toBeDefined();
-        expect(dist.nameToAddress).toBeDefined();
+        expect(index.nameToAbi).toBeDefined();
+        expect(index.nameToAddress).toBeDefined();
+        expect(index.nameToAddress).toBeDefined();
     });
 
     test('Coston imports abis, getters', async () => {
-        expect(dist.coston.abis).toBeDefined();
-        expect(dist.coston.namesToAddresses).toBeDefined();
-        expect(dist.coston.nameToAbi).toBeDefined();
-        expect(dist.coston.nameToAddress).toBeDefined();
+        expect(index.coston.abis).toBeDefined();
+        expect(index.coston.namesToAddresses).toBeDefined();
+        expect(index.coston.nameToAbi).toBeDefined();
+        expect(index.coston.nameToAddress).toBeDefined();
     });
 
     test('Coston2 imports abis, getters', async () => {
-        expect(dist.coston2.abis).toBeDefined();
-        expect(dist.coston2.namesToAddresses).toBeDefined();
-        expect(dist.coston2.nameToAbi).toBeDefined();
-        expect(dist.coston2.nameToAddress).toBeDefined();
+        expect(index.coston2.abis).toBeDefined();
+        expect(index.coston2.namesToAddresses).toBeDefined();
+        expect(index.coston2.nameToAbi).toBeDefined();
+        expect(index.coston2.nameToAddress).toBeDefined();
     });
 
     test('Flare imports abis, getters', async () => {
-        expect(dist.flare.abis).toBeDefined();
-        expect(dist.flare.namesToAddresses).toBeDefined();
-        expect(dist.flare.nameToAbi).toBeDefined();
-        expect(dist.flare.nameToAddress).toBeDefined();
+        expect(index.flare.abis).toBeDefined();
+        expect(index.flare.namesToAddresses).toBeDefined();
+        expect(index.flare.nameToAbi).toBeDefined();
+        expect(index.flare.nameToAddress).toBeDefined();
     });
 
     test('Songbird imports abis, getters', async () => {
-        expect(dist.songbird.abis).toBeDefined();
-        expect(dist.songbird.namesToAddresses).toBeDefined();
-        expect(dist.songbird.nameToAbi).toBeDefined();
-        expect(dist.songbird.nameToAddress).toBeDefined();
+        expect(index.songbird.abis).toBeDefined();
+        expect(index.songbird.namesToAddresses).toBeDefined();
+        expect(index.songbird.nameToAbi).toBeDefined();
+        expect(index.songbird.nameToAddress).toBeDefined();
     });
 });
