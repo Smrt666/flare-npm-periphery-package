@@ -8,6 +8,8 @@ module.exports = {
         ".(ts|tsx)": "ts-jest"
     },
     "transformIgnorePatterns": [
+        "/node_modules/", // defaults
+        "\\.pnp\\.[^\\\/]+$", // defaults
         ".json"
     ]
 };
