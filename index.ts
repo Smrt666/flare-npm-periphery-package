@@ -1,37 +1,26 @@
+import { JsonRpcProvider } from "ethers";
 import {
-  addressToName as addressToNameCST,
   nameToAbi as nameToAbiCST,
   nameToAddress as nameToAddressCST,
 } from "./coston";
 import {
-  addressToName as addressToNameCST2,
   nameToAbi as nameToAbiCST2,
   nameToAddress as nameToAddressCST2,
 } from "./coston2";
 import {
-  addressToName as addressToNameFLR,
   nameToAbi as nameToAbiFLR,
   nameToAddress as nameToAddressFLR,
 } from "./flare";
 import {
-  addressToName as addressToNameSGB,
   nameToAbi as nameToAbiSGB,
   nameToAddress as nameToAddressSGB,
 } from "./songbird";
 
-export const nameToAddress = (name: string, network: string): string => {
-  if (network.toLowerCase() == "flare") return nameToAddressFLR(name);
-  if (network.toLowerCase() == "songbird") return nameToAddressSGB(name);
-  if (network.toLowerCase() == "coston") return nameToAddressCST(name);
-  if (network.toLowerCase() == "coston2") return nameToAddressCST2(name);
-  return "";
-};
-
-export const addressToName = (address: string, network: string): string => {
-  if (network.toLowerCase() == "flare") return addressToNameFLR(address);
-  if (network.toLowerCase() == "songbird") return addressToNameSGB(address);
-  if (network.toLowerCase() == "coston") return addressToNameCST(address);
-  if (network.toLowerCase() == "coston2") return addressToNameCST2(address);
+export const nameToAddress = async (name: string, network: string, provider: JsonRpcProvider): Promise<string> => {
+  if (network.toLowerCase() == "flare") return await nameToAddressFLR(name, provider);
+  if (network.toLowerCase() == "songbird") return await nameToAddressSGB(name, provider);
+  if (network.toLowerCase() == "coston") return await nameToAddressCST(name, provider);
+  if (network.toLowerCase() == "coston2") return await nameToAddressCST2(name, provider);
   return "";
 };
 

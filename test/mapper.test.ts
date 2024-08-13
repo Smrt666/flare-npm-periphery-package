@@ -1,29 +1,26 @@
 import { ethers } from "ethers";
+import { coston, coston2, flare, songbird } from "../dist";
 
 
 describe("Coston2 adress getter", () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    let nameToAddress: any;
-    let namesToAddresses: any;
-    let FlareContractRegistryAddress: any;
+    const nameToAddress = coston2.nameToAddress;
+    const namesToAddresses = coston2.namesToAddresses;
+    const FlareContractRegistryAddress = coston2.FlareContractRegistryAddress;
 
     beforeAll(async () => {
         jsonRPC = new ethers.JsonRpcProvider("https://coston2-api.flare.network/ext/bc/C/rpc");
-        const chainIndex = await import("../coston2/index");
-        nameToAddress = chainIndex.nameToAddress;
-        namesToAddresses = chainIndex.namesToAddresses;
-        FlareContractRegistryAddress = chainIndex.FlareContractRegistryAddress;
     });
 
     test("Get FlareContractRegistry address", async () => {
         let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
-        expect(fcrAddress.toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(fcrAddress).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {
         let addresses = await namesToAddresses(["FlareContractRegistry", "FtsoRewardManager"], jsonRPC);
         expect(addresses.length).toBe(2);
-        expect(addresses[0].toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(addresses[0]).toBe(FlareContractRegistryAddress);
     });
 
     test("Get nonexistent address", async () => {
@@ -34,9 +31,9 @@ describe("Coston2 adress getter", () => {
     test("Get nonexistent addresses", async () => {
         let addresses = await namesToAddresses(["dhbshdlfsdgrf", "orsdjigopaijro", "uhsdfiud"], jsonRPC);
         expect(addresses.length).toBe(3);
-        expect(addresses[0].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[1].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[2].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[0]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[1]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[2]).toBe("0x0000000000000000000000000000000000000000");
     });
 
     test("Invalid input", async () => {
@@ -49,27 +46,23 @@ describe("Coston2 adress getter", () => {
 
 describe("Coston adress getter", () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    let nameToAddress: any;
-    let namesToAddresses: any;
-    let FlareContractRegistryAddress: any;
+    const nameToAddress = coston.nameToAddress;
+    const namesToAddresses = coston.namesToAddresses;
+    const FlareContractRegistryAddress = coston.FlareContractRegistryAddress;
 
     beforeAll(async () => {
         jsonRPC = new ethers.JsonRpcProvider("https://coston-api.flare.network/ext/bc/C/rpc");
-        const chainIndex = await import("../coston2/index");
-        nameToAddress = chainIndex.nameToAddress;
-        namesToAddresses = chainIndex.namesToAddresses;
-        FlareContractRegistryAddress = chainIndex.FlareContractRegistryAddress;
     });
 
     test("Get FlareContractRegistry address", async () => {
         let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
-        expect(fcrAddress.toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(fcrAddress).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {
         let addresses = await namesToAddresses(["FlareContractRegistry", "FtsoRewardManager"], jsonRPC);
         expect(addresses.length).toBe(2);
-        expect(addresses[0].toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(addresses[0]).toBe(FlareContractRegistryAddress);
     });
 
     test("Get nonexistent address", async () => {
@@ -80,9 +73,9 @@ describe("Coston adress getter", () => {
     test("Get nonexistent addresses", async () => {
         let addresses = await namesToAddresses(["dhbshdlfsdgrf", "orsdjigopaijro", "uhsdfiud"], jsonRPC);
         expect(addresses.length).toBe(3);
-        expect(addresses[0].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[1].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[2].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[0]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[1]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[2]).toBe("0x0000000000000000000000000000000000000000");
     });
 
     test("Invalid input", async () => {
@@ -95,27 +88,23 @@ describe("Coston adress getter", () => {
 
 describe("Flare adress getter", () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    let nameToAddress: any;
-    let namesToAddresses: any;
-    let FlareContractRegistryAddress: any;
+    const nameToAddress = flare.nameToAddress;
+    const namesToAddresses = flare.namesToAddresses;
+    const FlareContractRegistryAddress = flare.FlareContractRegistryAddress;
 
     beforeAll(async () => {
         jsonRPC = new ethers.JsonRpcProvider("https://flare-api.flare.network/ext/bc/C/rpc");
-        const chainIndex = await import("../coston2/index");
-        nameToAddress = chainIndex.nameToAddress;
-        namesToAddresses = chainIndex.namesToAddresses;
-        FlareContractRegistryAddress = chainIndex.FlareContractRegistryAddress;
     });
 
     test("Get FlareContractRegistry address", async () => {
         let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
-        expect(fcrAddress.toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(fcrAddress).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {
         let addresses = await namesToAddresses(["FlareContractRegistry", "FtsoRewardManager"], jsonRPC);
         expect(addresses.length).toBe(2);
-        expect(addresses[0].toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(addresses[0]).toBe(FlareContractRegistryAddress);
     });
 
     test("Get nonexistent address", async () => {
@@ -126,9 +115,9 @@ describe("Flare adress getter", () => {
     test("Get nonexistent addresses", async () => {
         let addresses = await namesToAddresses(["dhbshdlfsdgrf", "orsdjigopaijro", "uhsdfiud"], jsonRPC);
         expect(addresses.length).toBe(3);
-        expect(addresses[0].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[1].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[2].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[0]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[1]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[2]).toBe("0x0000000000000000000000000000000000000000");
     });
 
     test("Invalid input", async () => {
@@ -141,27 +130,23 @@ describe("Flare adress getter", () => {
 
 describe("Songbird adress getter", () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    let nameToAddress: any;
-    let namesToAddresses: any;
-    let FlareContractRegistryAddress: any;
+    const nameToAddress = songbird.nameToAddress;
+    const namesToAddresses = songbird.namesToAddresses;
+    const FlareContractRegistryAddress = songbird.FlareContractRegistryAddress;
 
     beforeAll(async () => {
         jsonRPC = new ethers.JsonRpcProvider("https://songbird-api.flare.network/ext/bc/C/rpc");
-        const chainIndex = await import("../coston2/index");
-        nameToAddress = chainIndex.nameToAddress;
-        namesToAddresses = chainIndex.namesToAddresses;
-        FlareContractRegistryAddress = chainIndex.FlareContractRegistryAddress;
     });
 
     test("Get FlareContractRegistry address", async () => {
         let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
-        expect(fcrAddress.toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(fcrAddress).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {
         let addresses = await namesToAddresses(["FlareContractRegistry", "FtsoRewardManager"], jsonRPC);
         expect(addresses.length).toBe(2);
-        expect(addresses[0].toLowerCase()).toBe(FlareContractRegistryAddress);
+        expect(addresses[0]).toBe(FlareContractRegistryAddress);
     });
 
     test("Get nonexistent address", async () => {
@@ -172,9 +157,9 @@ describe("Songbird adress getter", () => {
     test("Get nonexistent addresses", async () => {
         let addresses = await namesToAddresses(["dhbshdlfsdgrf", "orsdjigopaijro", "uhsdfiud"], jsonRPC);
         expect(addresses.length).toBe(3);
-        expect(addresses[0].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[1].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
-        expect(addresses[2].toLowerCase()).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[0]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[1]).toBe("0x0000000000000000000000000000000000000000");
+        expect(addresses[2]).toBe("0x0000000000000000000000000000000000000000");
     });
 
     test("Invalid input", async () => {

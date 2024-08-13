@@ -2,7 +2,7 @@ import { abis } from "./abis";
 import { ethers } from "ethers";
 
 // This should never change
-export const FlareContractRegistryAddress = "0xad67fe66660fb8dfe9d6b1b4240d8650e30f6019";
+export const FlareContractRegistryAddress = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019";
 
 export const nameToAddress = async (name: string, provider: ethers.JsonRpcApiProvider): Promise<string> => {
   const fcrContract = new ethers.Contract(FlareContractRegistryAddress, abis.IFlareContractRegistry, provider);
