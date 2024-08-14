@@ -14,7 +14,7 @@ describe('testing index file imports', () => {
 
         expect(index.nameToAbi).toBeDefined();
         expect(index.nameToAddress).toBeDefined();
-        expect(index.nameToAddress).toBeDefined();
+        expect(index.namesToAddresses).toBeDefined();
     });
 
     test('Coston imports abis, getters', async () => {
@@ -22,6 +22,7 @@ describe('testing index file imports', () => {
         expect(index.coston.namesToAddresses).toBeDefined();
         expect(index.coston.nameToAbi).toBeDefined();
         expect(index.coston.nameToAddress).toBeDefined();
+        expect(index.coston.namesToAddresses).toBeDefined();
     });
 
     test('Coston2 imports abis, getters', async () => {
@@ -29,6 +30,7 @@ describe('testing index file imports', () => {
         expect(index.coston2.namesToAddresses).toBeDefined();
         expect(index.coston2.nameToAbi).toBeDefined();
         expect(index.coston2.nameToAddress).toBeDefined();
+        expect(index.coston2.namesToAddresses).toBeDefined();
     });
 
     test('Flare imports abis, getters', async () => {
@@ -36,6 +38,7 @@ describe('testing index file imports', () => {
         expect(index.flare.namesToAddresses).toBeDefined();
         expect(index.flare.nameToAbi).toBeDefined();
         expect(index.flare.nameToAddress).toBeDefined();
+        expect(index.flare.namesToAddresses).toBeDefined();
     });
 
     test('Songbird imports abis, getters', async () => {
@@ -43,5 +46,6 @@ describe('testing index file imports', () => {
         expect(index.songbird.namesToAddresses).toBeDefined();
         expect(index.songbird.nameToAbi).toBeDefined();
         expect(index.songbird.nameToAddress).toBeDefined();
+        expect(index.songbird.namesToAddresses).toBeDefined();
     });
 });
