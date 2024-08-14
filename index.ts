@@ -1,40 +1,23 @@
-import { JsonRpcProvider } from "ethers";
-import {
-  nameToAbi as nameToAbiCST,
-  nameToAddress as nameToAddressCST,
-  namesToAddresses as namesToAddressesCST,
-} from "./coston";
-import {
-  nameToAbi as nameToAbiCST2,
-  nameToAddress as nameToAddressCST2,
-  namesToAddresses as namesToAddressesCST2,
-} from "./coston2";
-import {
-  nameToAbi as nameToAbiFLR,
-  nameToAddress as nameToAddressFLR,
-  namesToAddresses as namesToAddressesFLR,
-} from "./flare";
-import {
-  nameToAbi as nameToAbiSGB,
-  nameToAddress as nameToAddressSGB,
-  namesToAddresses as namesToAddressesSGB,
-} from "./songbird";
+import { nameToAbi as nameToAbiCST } from "./coston";
+import { nameToAbi as nameToAbiCST2 } from "./coston2";
+import { nameToAbi as nameToAbiFLR } from "./flare";
+import { nameToAbi as nameToAbiSGB } from "./songbird";
 
-export const nameToAddress = async (name: string, network: string, provider: JsonRpcProvider): Promise<string> => {
-  if (network.toLowerCase() == "flare") return await nameToAddressFLR(name, provider);
-  if (network.toLowerCase() == "songbird") return await nameToAddressSGB(name, provider);
-  if (network.toLowerCase() == "coston") return await nameToAddressCST(name, provider);
-  if (network.toLowerCase() == "coston2") return await nameToAddressCST2(name, provider);
-  return "";
+import { ethers } from "ethers";
+
+// This should never change
+export const FlareContractRegistryAddress = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019";
+
+export const nameToAddress = async (name: string, provider: ethers.JsonRpcApiProvider): Promise<string> => {
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare").data, provider);
+  return await fcrContract.getContractAddressByName(name);
 };
 
-export const namesToAddresses = async (names: string[], network: string, provider: JsonRpcProvider): Promise<string[]> => {
-  if (network.toLowerCase() == "flare") return await namesToAddressesFLR(names, provider);
-  if (network.toLowerCase() == "songbird") return await namesToAddressesSGB(names, provider);
-  if (network.toLowerCase() == "coston") return await namesToAddressesCST(names, provider);
-  if (network.toLowerCase() == "coston2") return await namesToAddressesCST2(names, provider);
-  return [];
+export const namesToAddresses = async (names: string[], provider: ethers.JsonRpcApiProvider): Promise<string[]> => {
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare").data, provider);
+  return await fcrContract.getContractAddressesByName(names);
 };
+
 
 export const nameToAbi = (
   name: string,
