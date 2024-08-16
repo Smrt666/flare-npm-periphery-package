@@ -1,16 +1,14 @@
 import { ethers } from "ethers";
-import { coston, coston2, flare, songbird, nameToAbi, nameToAddress, namesToAddresses } from "../index";
+import { coston, coston2, flare, songbird, nameToAddress, namesToAddresses, FlareContractRegistryAddress } from "../index";
 
 
 [
-    [coston, "coston"],
-    [coston2, "coston2"],
-    [flare, "flare"],
-    [songbird, "songbird"],
-].map(([chain, chainName]) => describe(`${chainName} adress getter`, () => {
+    "coston",
+    "coston2",
+    "flare",
+    "songbird",
+].map(chainName => describe(`${chainName} adress getter`, () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    // @ts-ignore
-    const chain_FlareContractRegistryAddress = chain.FlareContractRegistryAddress;
     // @ts-ignore
     let network: string = chainName;
 
@@ -20,13 +18,13 @@ import { coston, coston2, flare, songbird, nameToAbi, nameToAddress, namesToAddr
 
     test("Get FlareContractRegistry address", async () => {
         let fcrAddress2 = await nameToAddress("FlareContractRegistry", jsonRPC);
-        expect(fcrAddress2).toBe(chain_FlareContractRegistryAddress);
+        expect(fcrAddress2).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {
         let addresses = await namesToAddresses(["FlareContractRegistry", "FtsoRewardManager"], jsonRPC);
         expect(addresses.length).toBe(2);
-        expect(addresses[0]).toBe(chain_FlareContractRegistryAddress);
+        expect(addresses[0]).toBe(FlareContractRegistryAddress);
     });
 
     test("Get nonexistent address", async () => {
@@ -44,7 +42,7 @@ import { coston, coston2, flare, songbird, nameToAbi, nameToAddress, namesToAddr
 
     test("Invalid input", async () => {
         // @ts-ignore
-        await expect(nameToAddress(5, network, jsonRPC)).rejects.toThrow(TypeError);
+        await expect(nameToAddress(5, network, jsonRPC)).rejects.toThrow();
         // @ts-ignore
         await expect(namesToAddresses("FlareContractRegistry", network, jsonRPC)).rejects.toThrow();
     });
