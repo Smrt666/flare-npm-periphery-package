@@ -1,5 +1,5 @@
 import { ethers } from "ethers";
-import { coston, coston2, flare, songbird, nameToAddress, namesToAddresses, FlareContractRegistryAddress } from "../index";
+import { FlareContractRegistryAddress, nameToAddress, namesToAddresses } from "../index";
 
 
 [
@@ -42,8 +42,8 @@ import { coston, coston2, flare, songbird, nameToAddress, namesToAddresses, Flar
 
     test("Invalid input", async () => {
         // @ts-ignore
-        await expect(nameToAddress(5, network, jsonRPC)).rejects.toThrow();
+        await expect(nameToAddress(5, jsonRPC)).rejects.toThrow();
         // @ts-ignore
-        await expect(namesToAddresses("FlareContractRegistry", network, jsonRPC)).rejects.toThrow();
+        await expect(namesToAddresses("FlareContractRegistry", jsonRPC)).rejects.toThrow();
     });
 }));
