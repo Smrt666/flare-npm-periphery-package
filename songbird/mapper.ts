@@ -1,17 +1,17 @@
 import { abis } from "./abis";
 
 
-export const nameToAbi = (name: string): { data: any; status: string } => {
+export const nameToAbi = (name: string): any => {
   try {
     const abiData = abis[name];
-    if (abiData !== undefined) return { data: abiData, status: "OK" };
-    return { data: [], status: "No official Flare Network contract with this name" };
+    if (abiData !== undefined) return abiData;
+    throw new TypeError(`No official Flare Network contract with name "${name}".`);
 
   } catch (e) {
     if (e instanceof TypeError) {
-      return { data: [], status: "No official Flare Network contract with this name" };
+      throw new TypeError(`No official Flare Network contract with name "${name}".`);
     }
   }
 
-  return { data: [], status: "Unknown error" };
+  throw new Error(`Unknown exception occured. Could not find any official Flare Network contract with name "${name}".`);
 };

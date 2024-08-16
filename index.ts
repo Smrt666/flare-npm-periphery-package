@@ -9,12 +9,12 @@ import { ethers } from "ethers";
 export const FlareContractRegistryAddress = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019";
 
 export const nameToAddress = async (name: string, provider: ethers.JsonRpcApiProvider): Promise<string> => {
-  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare").data, provider);
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare"), provider);
   return await fcrContract.getContractAddressByName(name);
 };
 
 export const namesToAddresses = async (names: string[], provider: ethers.JsonRpcApiProvider): Promise<string[]> => {
-  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare").data, provider);
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare"), provider);
   return await fcrContract.getContractAddressesByName(names);
 };
 
@@ -22,12 +22,12 @@ export const namesToAddresses = async (names: string[], provider: ethers.JsonRpc
 export const nameToAbi = (
   name: string,
   network: string,
-): { data: any; status: string } => {
+): any => {
   if (network.toLowerCase() == "flare") return nameToAbiFLR(name);
   if (network.toLowerCase() == "songbird") return nameToAbiSGB(name);
   if (network.toLowerCase() == "coston") return nameToAbiCST(name);
   if (network.toLowerCase() == "coston2") return nameToAbiCST2(name);
-  return { data: [], status: "Please select a network" };
+  throw new Error(`Unsupported network "${network}". Supported networks are flare, coston2, songbird and coston.`)
 };
 
 export * as coston from "./coston";
