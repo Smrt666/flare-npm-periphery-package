@@ -1,7 +1,7 @@
-import { nameToAbi as nameToAbiCST } from "./coston";
-import { nameToAbi as nameToAbiCST2 } from "./coston2";
-import { nameToAbi as nameToAbiFLR } from "./flare";
-import { nameToAbi as nameToAbiSGB } from "./songbird";
+import { interfaceToAbi as interfaceToAbiCST, nameToAbi as nameToAbiCST } from "./coston";
+import { interfaceToAbi as interfaceToAbiCST2, nameToAbi as nameToAbiCST2 } from "./coston2";
+import { interfaceToAbi as interfaceToAbiFLR, nameToAbi as nameToAbiFLR } from "./flare";
+import { interfaceToAbi as interfaceToAbiSGB, nameToAbi as nameToAbiSGB } from "./songbird";
 
 import { ethers } from "ethers";
 
@@ -27,6 +27,17 @@ export const nameToAbi = (
   if (network.toLowerCase() == "songbird") return nameToAbiSGB(name);
   if (network.toLowerCase() == "coston") return nameToAbiCST(name);
   if (network.toLowerCase() == "coston2") return nameToAbiCST2(name);
+  throw new Error(`Unsupported network "${network}". Supported networks are flare, coston2, songbird and coston.`)
+};
+
+export const interfaceToAbi = (
+  name: string,
+  network: string,
+): any => {
+  if (network.toLowerCase() == "flare") return interfaceToAbiFLR(name);
+  if (network.toLowerCase() == "songbird") return interfaceToAbiSGB(name);
+  if (network.toLowerCase() == "coston") return interfaceToAbiCST(name);
+  if (network.toLowerCase() == "coston2") return interfaceToAbiCST2(name);
   throw new Error(`Unsupported network "${network}". Supported networks are flare, coston2, songbird and coston.`)
 };
 
