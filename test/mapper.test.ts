@@ -1,5 +1,13 @@
 import { ethers } from "ethers";
-import { FlareContractRegistryAddress, nameToAddress, namesToAddresses } from "../index";
+import { FlareContractRegistryAddress, coston, coston2, flare, nameToAddress, namesToAddresses, songbird } from "../index";
+
+
+const name_to_module: { [key: string]: typeof coston } = {
+    "coston": coston,
+    "coston2": coston2,
+    "flare": flare,
+    "songbird": songbird,
+};
 
 
 [
@@ -9,7 +17,6 @@ import { FlareContractRegistryAddress, nameToAddress, namesToAddresses } from ".
     "songbird",
 ].map(chainName => describe(`${chainName} adress getter`, () => {
     let jsonRPC: ethers.JsonRpcProvider;
-    // @ts-ignore
     let network: string = chainName;
 
     beforeAll(async () => {
@@ -17,8 +24,10 @@ import { FlareContractRegistryAddress, nameToAddress, namesToAddresses } from ".
     });
 
     test("Get FlareContractRegistry address", async () => {
-        let fcrAddress2 = await nameToAddress("FlareContractRegistry", jsonRPC);
+        let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
+        let fcrAddress2 = await name_to_module[network].products.FlareContractRegistry.getAddress(jsonRPC);
         expect(fcrAddress2).toBe(FlareContractRegistryAddress);
+        expect(fcrAddress).toBe(FlareContractRegistryAddress);
     });
 
     test("Get addresses", async () => {

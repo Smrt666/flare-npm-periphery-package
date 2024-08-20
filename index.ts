@@ -9,12 +9,12 @@ import { ethers } from "ethers";
 export const FlareContractRegistryAddress = "0xaD67FE66660Fb8dFE9d6b1b4240d8650e30F6019";
 
 export const nameToAddress = async (name: string, provider: ethers.JsonRpcApiProvider): Promise<string> => {
-  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare"), provider);
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("FlareContractRegistry", "flare"), provider);
   return await fcrContract.getContractAddressByName(name);
 };
 
 export const namesToAddresses = async (names: string[], provider: ethers.JsonRpcApiProvider): Promise<string[]> => {
-  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("IFlareContractRegistry", "flare"), provider);
+  const fcrContract = new ethers.Contract(FlareContractRegistryAddress, nameToAbi("FlareContractRegistry", "flare"), provider);
   return await fcrContract.getContractAddressesByName(names);
 };
 
