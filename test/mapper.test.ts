@@ -23,7 +23,7 @@ const name_to_module: { [key: string]: typeof coston } = {
         jsonRPC = new ethers.JsonRpcProvider(`https://${network}-api.flare.network/ext/bc/C/rpc`);
     });
 
-    test("Get FlareContractRegistry address", async () => {
+    test("Name to address", async () => {
         let fcrAddress = await nameToAddress("FlareContractRegistry", jsonRPC);
         let fcrAddress2 = await name_to_module[network].products.FlareContractRegistry.getAddress(jsonRPC);
         expect(fcrAddress2).toBe(FlareContractRegistryAddress);
@@ -56,3 +56,16 @@ const name_to_module: { [key: string]: typeof coston } = {
         await expect(namesToAddresses("FlareContractRegistry", jsonRPC)).rejects.toThrow();
     });
 }));
+
+
+describe("Special tests", () => {
+    test("Non-standard interface name", async () => {
+        let jsonRPC = new ethers.JsonRpcProvider(`https://coston2-api.flare.network/ext/bc/C/rpc`);
+        let addr = await coston2.products.ValidatorRewardManager.getAddress(jsonRPC);
+        expect(addr).not.toBe("0x0000000000000000000000000000000000000000");
+
+        let cAbi = coston2.products.ValidatorRewardManager.abi;
+        let iAbi = coston2.interfaceAbis.IGenericRewardManager;
+        expect(cAbi).toBe(iAbi);
+    });
+});
