@@ -1,17 +1,17 @@
-import AddressValidity from "./artifacts/contracts/interface/types/AddressValidity.sol/AddressValidity.json";
-import BalanceDecreasingTransaction from "./artifacts/contracts/interface/types/BalanceDecreasingTransaction.sol/BalanceDecreasingTransaction.json";
+import AddressValidity from "./artifacts/contracts/AddressValidity.sol/AddressValidity.json";
+import BalanceDecreasingTransaction from "./artifacts/contracts/BalanceDecreasingTransaction.sol/BalanceDecreasingTransaction.json";
 import Bn256 from "./artifacts/contracts/fastUpdates/lib/Bn256.sol/Bn256.json";
-import ConfirmedBlockHeightExists from "./artifacts/contracts/interface/types/ConfirmedBlockHeightExists.sol/ConfirmedBlockHeightExists.json";
-import EVMTransaction from "./artifacts/contracts/interface/types/EVMTransaction.sol/EVMTransaction.json";
+import ConfirmedBlockHeightExists from "./artifacts/contracts/ConfirmedBlockHeightExists.sol/ConfirmedBlockHeightExists.json";
+import EVMTransaction from "./artifacts/contracts/EVMTransaction.sol/EVMTransaction.json";
 import FlareContractsRegistryLibrary from "./artifacts/contracts/ContractRegistryLibrary.sol/FlareContractsRegistryLibrary.json";
-import IAddressValidityVerification from "./artifacts/contracts/generated/verification/interface/IAddressValidityVerification.sol/IAddressValidityVerification.json";
-import IBalanceDecreasingTransactionVerification from "./artifacts/contracts/generated/verification/interface/IBalanceDecreasingTransactionVerification.sol/IBalanceDecreasingTransactionVerification.json";
+import IAddressValidityVerification from "./artifacts/contracts/IAddressValidityVerification.sol/IAddressValidityVerification.json";
+import IBalanceDecreasingTransactionVerification from "./artifacts/contracts/IBalanceDecreasingTransactionVerification.sol/IBalanceDecreasingTransactionVerification.json";
 import ICChainStake from "./artifacts/contracts/ICChainStake.sol/ICChainStake.json";
 import ICChainVotePower from "./artifacts/contracts/ICChainVotePower.sol/ICChainVotePower.json";
 import IClaimSetupManager from "./artifacts/contracts/IClaimSetupManager.sol/IClaimSetupManager.json";
-import IConfirmedBlockHeightExistsVerification from "./artifacts/contracts/generated/verification/interface/IConfirmedBlockHeightExistsVerification.sol/IConfirmedBlockHeightExistsVerification.json";
+import IConfirmedBlockHeightExistsVerification from "./artifacts/contracts/IConfirmedBlockHeightExistsVerification.sol/IConfirmedBlockHeightExistsVerification.json";
 import IDelegationAccount from "./artifacts/contracts/IDelegationAccount.sol/IDelegationAccount.json";
-import IEVMTransactionVerification from "./artifacts/contracts/generated/verification/interface/IEVMTransactionVerification.sol/IEVMTransactionVerification.json";
+import IEVMTransactionVerification from "./artifacts/contracts/IEVMTransactionVerification.sol/IEVMTransactionVerification.json";
 import IEntityManager from "./artifacts/contracts/IEntityManager.sol/IEntityManager.json";
 import IFastUpdateIncentiveManager from "./artifacts/contracts/IFastUpdateIncentiveManager.sol/IFastUpdateIncentiveManager.json";
 import IFastUpdater from "./artifacts/contracts/IFastUpdater.sol/IFastUpdater.json";
@@ -64,18 +64,17 @@ import IIVoterRegistrationTrigger from "./artifacts/contracts/protocol/interface
 import IIVoterRegistry from "./artifacts/contracts/protocol/interface/IIVoterRegistry.sol/IIVoterRegistry.json";
 import IIncreaseManager from "./artifacts/contracts/IIncreaseManager.sol/IIncreaseManager.json";
 import IMerkleRootStorage from "./artifacts/contracts/IMerkleRootStorage.sol/IMerkleRootStorage.json";
-import IPaymentVerification from "./artifacts/contracts/generated/verification/interface/IPaymentVerification.sol/IPaymentVerification.json";
+import IPaymentVerification from "./artifacts/contracts/IPaymentVerification.sol/IPaymentVerification.json";
 import IPollingFtso from "./artifacts/contracts/IPollingFtso.sol/IPollingFtso.json";
 import IPriceSubmitter from "./artifacts/contracts/IPriceSubmitter.sol/IPriceSubmitter.json";
 import IRNat from "./artifacts/contracts/IRNat.sol/IRNat.json";
 import IRNatAccount from "./artifacts/contracts/IRNatAccount.sol/IRNatAccount.json";
 import IRandomProvider from "./artifacts/contracts/IRandomProvider.sol/IRandomProvider.json";
-import IReferencedPaymentNonexistenceVerification from "./artifacts/contracts/generated/verification/interface/IReferencedPaymentNonexistenceVerification.sol/IReferencedPaymentNonexistenceVerification.json";
+import IReferencedPaymentNonexistenceVerification from "./artifacts/contracts/IReferencedPaymentNonexistenceVerification.sol/IReferencedPaymentNonexistenceVerification.json";
 import IRelay from "./artifacts/contracts/IRelay.sol/IRelay.json";
 import IRewardManager from "./artifacts/contracts/IRewardManager.sol/IRewardManager.json";
 import IStateConnector from "./artifacts/contracts/IStateConnector.sol/IStateConnector.json";
 import ISubmission from "./artifacts/contracts/ISubmission.sol/ISubmission.json";
-import ITypeTemplateVerification from "./artifacts/contracts/generated/verification/interface/ITypeTemplateVerification.sol/ITypeTemplateVerification.json";
 import IVPContractEvents from "./artifacts/contracts/IVPContractEvents.sol/IVPContractEvents.json";
 import IVPToken from "./artifacts/contracts/IVPToken.sol/IVPToken.json";
 import IValidatorRewardOffersManager from "./artifacts/contracts/IValidatorRewardOffersManager.sol/IValidatorRewardOffersManager.json";
@@ -83,11 +82,13 @@ import IVoterRegistry from "./artifacts/contracts/IVoterRegistry.sol/IVoterRegis
 import IVoterWhitelister from "./artifacts/contracts/IVoterWhitelister.sol/IVoterWhitelister.json";
 import IWNat from "./artifacts/contracts/IWNat.sol/IWNat.json";
 import IWNatDelegationFee from "./artifacts/contracts/IWNatDelegationFee.sol/IWNatDelegationFee.json";
-import Payment from "./artifacts/contracts/interface/types/Payment.sol/Payment.json";
-import ReferencedPaymentNonexistence from "./artifacts/contracts/interface/types/ReferencedPaymentNonexistence.sol/ReferencedPaymentNonexistence.json";
-import TypeTemplate from "./artifacts/contracts/interface/types/TypeTemplate.sol/TypeTemplate.json";
+import Payment from "./artifacts/contracts/Payment.sol/Payment.json";
+import ReferencedPaymentNonexistence from "./artifacts/contracts/ReferencedPaymentNonexistence.sol/ReferencedPaymentNonexistence.json";
 
-export const abis: { [key: string]: any; } = {
+import { JsonRpcProvider } from "ethers";
+import { nameToAddress } from "../index";
+
+export const interfaceAbis: { [key: string]: any; } = {
   AddressValidity: AddressValidity.abi,
   BalanceDecreasingTransaction: BalanceDecreasingTransaction.abi,
   Bn256: Bn256.abi,
@@ -165,7 +166,6 @@ export const abis: { [key: string]: any; } = {
   IRewardManager: IRewardManager.abi,
   IStateConnector: IStateConnector.abi,
   ISubmission: ISubmission.abi,
-  ITypeTemplateVerification: ITypeTemplateVerification.abi,
   IVPContractEvents: IVPContractEvents.abi,
   IVPToken: IVPToken.abi,
   IValidatorRewardOffersManager: IValidatorRewardOffersManager.abi,
@@ -175,5 +175,181 @@ export const abis: { [key: string]: any; } = {
   IWNatDelegationFee: IWNatDelegationFee.abi,
   Payment: Payment.abi,
   ReferencedPaymentNonexistence: ReferencedPaymentNonexistence.abi,
-  TypeTemplate: TypeTemplate.abi,
+};
+
+export const products: { [key: string]: { name: string, interface: string, abi: any, getAddress: (provider: JsonRpcProvider) => Promise<string> } } = {
+  ClaimSetupManager: {
+    name: "ClaimSetupManager",
+    interface: "IClaimSetupManager",
+    abi: interfaceAbis.IClaimSetupManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("ClaimSetupManager", provider),
+  },
+  EntityManager: {
+    name: "EntityManager",
+    interface: "IEntityManager",
+    abi: interfaceAbis.IEntityManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("EntityManager", provider),
+  },
+  FastUpdateIncentiveManager: {
+    name: "FastUpdateIncentiveManager",
+    interface: "IFastUpdateIncentiveManager",
+    abi: interfaceAbis.IFastUpdateIncentiveManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FastUpdateIncentiveManager", provider),
+  },
+  FastUpdater: {
+    name: "FastUpdater",
+    interface: "IFastUpdater",
+    abi: interfaceAbis.IFastUpdater,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FastUpdater", provider),
+  },
+  FastUpdatesConfiguration: {
+    name: "FastUpdatesConfiguration",
+    interface: "IFastUpdatesConfiguration",
+    abi: interfaceAbis.IFastUpdatesConfiguration,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FastUpdatesConfiguration", provider),
+  },
+  FlareAssetRegistry: {
+    name: "FlareAssetRegistry",
+    interface: "IFlareAssetRegistry",
+    abi: interfaceAbis.IFlareAssetRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareAssetRegistry", provider),
+  },
+  FlareContractRegistry: {
+    name: "FlareContractRegistry",
+    interface: "IFlareContractRegistry",
+    abi: interfaceAbis.IFlareContractRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareContractRegistry", provider),
+  },
+  FlareSystemsCalculator: {
+    name: "FlareSystemsCalculator",
+    interface: "IFlareSystemsCalculator",
+    abi: interfaceAbis.IFlareSystemsCalculator,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareSystemsCalculator", provider),
+  },
+  FlareSystemsManager: {
+    name: "FlareSystemsManager",
+    interface: "IFlareSystemsManager",
+    abi: interfaceAbis.IFlareSystemsManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareSystemsManager", provider),
+  },
+  FtsoFeedDecimals: {
+    name: "FtsoFeedDecimals",
+    interface: "IFtsoFeedDecimals",
+    abi: interfaceAbis.IFtsoFeedDecimals,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoFeedDecimals", provider),
+  },
+  FtsoFeedIdConverter: {
+    name: "FtsoFeedIdConverter",
+    interface: "IFtsoFeedIdConverter",
+    abi: interfaceAbis.IFtsoFeedIdConverter,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoFeedIdConverter", provider),
+  },
+  FtsoFeedPublisher: {
+    name: "FtsoFeedPublisher",
+    interface: "IFtsoFeedPublisher",
+    abi: interfaceAbis.IFtsoFeedPublisher,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoFeedPublisher", provider),
+  },
+  FtsoInflationConfigurations: {
+    name: "FtsoInflationConfigurations",
+    interface: "IFtsoInflationConfigurations",
+    abi: interfaceAbis.IFtsoInflationConfigurations,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoInflationConfigurations", provider),
+  },
+  FtsoManager: {
+    name: "FtsoManager",
+    interface: "IFtsoManager",
+    abi: interfaceAbis.IFtsoManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoManager", provider),
+  },
+  FtsoRegistry: {
+    name: "FtsoRegistry",
+    interface: "IFtsoRegistry",
+    abi: interfaceAbis.IFtsoRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoRegistry", provider),
+  },
+  FtsoRewardManager: {
+    name: "FtsoRewardManager",
+    interface: "IFtsoRewardManager",
+    abi: interfaceAbis.IFtsoRewardManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoRewardManager", provider),
+  },
+  FtsoRewardOffersManager: {
+    name: "FtsoRewardOffersManager",
+    interface: "IFtsoRewardOffersManager",
+    abi: interfaceAbis.IFtsoRewardOffersManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoRewardOffersManager", provider),
+  },
+  GovernanceSettings: {
+    name: "GovernanceSettings",
+    interface: "IGovernanceSettings",
+    abi: interfaceAbis.IGovernanceSettings,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("GovernanceSettings", provider),
+  },
+  GovernanceVotePower: {
+    name: "GovernanceVotePower",
+    interface: "IGovernanceVotePower",
+    abi: interfaceAbis.IGovernanceVotePower,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("GovernanceVotePower", provider),
+  },
+  PollingFtso: {
+    name: "PollingFtso",
+    interface: "IPollingFtso",
+    abi: interfaceAbis.IPollingFtso,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PollingFtso", provider),
+  },
+  PriceSubmitter: {
+    name: "PriceSubmitter",
+    interface: "IPriceSubmitter",
+    abi: interfaceAbis.IPriceSubmitter,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PriceSubmitter", provider),
+  },
+  Relay: {
+    name: "Relay",
+    interface: "IRelay",
+    abi: interfaceAbis.IRelay,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("Relay", provider),
+  },
+  RewardManager: {
+    name: "RewardManager",
+    interface: "IRewardManager",
+    abi: interfaceAbis.IRewardManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("RewardManager", provider),
+  },
+  StateConnector: {
+    name: "StateConnector",
+    interface: "IStateConnector",
+    abi: interfaceAbis.IStateConnector,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("StateConnector", provider),
+  },
+  Submission: {
+    name: "Submission",
+    interface: "ISubmission",
+    abi: interfaceAbis.ISubmission,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("Submission", provider),
+  },
+  VoterRegistry: {
+    name: "VoterRegistry",
+    interface: "IVoterRegistry",
+    abi: interfaceAbis.IVoterRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("VoterRegistry", provider),
+  },
+  VoterWhitelister: {
+    name: "VoterWhitelister",
+    interface: "IVoterWhitelister",
+    abi: interfaceAbis.IVoterWhitelister,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("VoterWhitelister", provider),
+  },
+  WNat: {
+    name: "WNat",
+    interface: "IWNat",
+    abi: interfaceAbis.IWNat,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("WNat", provider),
+  },
+  WNatDelegationFee: {
+    name: "WNatDelegationFee",
+    interface: "IWNatDelegationFee",
+    abi: interfaceAbis.IWNatDelegationFee,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("WNatDelegationFee", provider),
+  },
 };

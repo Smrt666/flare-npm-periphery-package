@@ -78,7 +78,10 @@ import IVoterWhitelister from "./artifacts/contracts/IVoterWhitelister.sol/IVote
 import IWNat from "./artifacts/contracts/IWNat.sol/IWNat.json";
 import IWNatDelegationFee from "./artifacts/contracts/IWNatDelegationFee.sol/IWNatDelegationFee.json";
 
-export const abis: { [key: string]: any; } = {
+import { JsonRpcProvider } from "ethers";
+import { nameToAddress } from "../index";
+
+export const interfaceAbis: { [key: string]: any; } = {
   Bn256: Bn256.abi,
   FlareContractsRegistryLibrary: FlareContractsRegistryLibrary.abi,
   IAddressBinder: IAddressBinder.abi,
@@ -158,4 +161,127 @@ export const abis: { [key: string]: any; } = {
   IVoterWhitelister: IVoterWhitelister.abi,
   IWNat: IWNat.abi,
   IWNatDelegationFee: IWNatDelegationFee.abi,
+};
+
+export const products: { [key: string]: { name: string, interface: string, abi: any, getAddress: (provider: JsonRpcProvider) => Promise<string> } } = {
+  AddressBinder: {
+    name: "AddressBinder",
+    interface: "IAddressBinder",
+    abi: interfaceAbis.IAddressBinder,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("AddressBinder", provider),
+  },
+  ClaimSetupManager: {
+    name: "ClaimSetupManager",
+    interface: "IClaimSetupManager",
+    abi: interfaceAbis.IClaimSetupManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("ClaimSetupManager", provider),
+  },
+  DistributionToDelegators: {
+    name: "DistributionToDelegators",
+    interface: "IDistributionToDelegators",
+    abi: interfaceAbis.IDistributionToDelegators,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("DistributionToDelegators", provider),
+  },
+  FlareAssetRegistry: {
+    name: "FlareAssetRegistry",
+    interface: "IFlareAssetRegistry",
+    abi: interfaceAbis.IFlareAssetRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareAssetRegistry", provider),
+  },
+  FlareContractRegistry: {
+    name: "FlareContractRegistry",
+    interface: "IFlareContractRegistry",
+    abi: interfaceAbis.IFlareContractRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FlareContractRegistry", provider),
+  },
+  FtsoManager: {
+    name: "FtsoManager",
+    interface: "IFtsoManager",
+    abi: interfaceAbis.IFtsoManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoManager", provider),
+  },
+  FtsoRegistry: {
+    name: "FtsoRegistry",
+    interface: "IFtsoRegistry",
+    abi: interfaceAbis.IFtsoRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoRegistry", provider),
+  },
+  FtsoRewardManager: {
+    name: "FtsoRewardManager",
+    interface: "IFtsoRewardManager",
+    abi: interfaceAbis.IFtsoRewardManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("FtsoRewardManager", provider),
+  },
+  GovernanceSettings: {
+    name: "GovernanceSettings",
+    interface: "IGovernanceSettings",
+    abi: interfaceAbis.IGovernanceSettings,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("GovernanceSettings", provider),
+  },
+  GovernanceVotePower: {
+    name: "GovernanceVotePower",
+    interface: "IGovernanceVotePower",
+    abi: interfaceAbis.IGovernanceVotePower,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("GovernanceVotePower", provider),
+  },
+  PChainStakeMirror: {
+    name: "PChainStakeMirror",
+    interface: "IPChainStakeMirror",
+    abi: interfaceAbis.IPChainStakeMirror,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PChainStakeMirror", provider),
+  },
+  PChainStakeMirrorMultiSigVoting: {
+    name: "PChainStakeMirrorMultiSigVoting",
+    interface: "IPChainStakeMirrorMultiSigVoting",
+    abi: interfaceAbis.IPChainStakeMirrorMultiSigVoting,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PChainStakeMirrorMultiSigVoting", provider),
+  },
+  PChainStakeMirrorVerifier: {
+    name: "PChainStakeMirrorVerifier",
+    interface: "IPChainStakeMirrorVerifier",
+    abi: interfaceAbis.IPChainStakeMirrorVerifier,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PChainStakeMirrorVerifier", provider),
+  },
+  PollingFtso: {
+    name: "PollingFtso",
+    interface: "IPollingFtso",
+    abi: interfaceAbis.IPollingFtso,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PollingFtso", provider),
+  },
+  PriceSubmitter: {
+    name: "PriceSubmitter",
+    interface: "IPriceSubmitter",
+    abi: interfaceAbis.IPriceSubmitter,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("PriceSubmitter", provider),
+  },
+  RNat: {
+    name: "RNat",
+    interface: "IRNat",
+    abi: interfaceAbis.IRNat,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("RNat", provider),
+  },
+  ValidatorRegistry: {
+    name: "ValidatorRegistry",
+    interface: "IValidatorRegistry",
+    abi: interfaceAbis.IValidatorRegistry,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("ValidatorRegistry", provider),
+  },
+  ValidatorRewardManager: {
+    name: "ValidatorRewardManager",
+    interface: "IGenericRewardManager",
+    abi: interfaceAbis.IGenericRewardManager,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("ValidatorRewardManager", provider),
+  },
+  VoterWhitelister: {
+    name: "VoterWhitelister",
+    interface: "IVoterWhitelister",
+    abi: interfaceAbis.IVoterWhitelister,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("VoterWhitelister", provider),
+  },
+  WNat: {
+    name: "WNat",
+    interface: "IWNat",
+    abi: interfaceAbis.IWNat,
+    getAddress: async (provider: JsonRpcProvider) => await nameToAddress("WNat", provider),
+  },
 };
